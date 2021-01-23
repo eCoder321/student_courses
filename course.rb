@@ -7,7 +7,11 @@ class Course
     @time = time
     @instructor =instructor
     #@students = []
-    @@all.push(self)
+    save
+  end
+
+  def save
+    self.class.all.push(self)
   end
 
   def self.all

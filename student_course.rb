@@ -6,7 +6,11 @@ class StudentCourse
   def initialize(student, course)
     @student = student
     @course =course
-    @@all.push(self)
+     save
+  end
+
+  def save
+    self.class.all.push(self)
   end
 
   def self.all

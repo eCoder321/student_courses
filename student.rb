@@ -1,18 +1,24 @@
 class Student
+  @@all = []
   attr_accessor :grade, :age, :courses
   attr_reader :name
 
   def initialize(name, age, grade)
-    @name = name 
-    @age = age 
+    @name = name
+    @age = age
     @grade = grade
+    save
     #@courses = [] #"we no longer need this since we can use the StudentCourse class"
+  end
+
+  def save
+    self.class.all.push(self)
   end
 
   def enroll(course)
     # self.courses.push(course)
     # course.students.push(self)
-   # """this StudentCourse.new(self,course) takes the place of both variables defined above"""
+    # """this StudentCourse.new(self,course) takes the place of both variables defined above"""
     StudentCourse.new(self, course)
     "Awesome job #{self.name}! You have successfully enrolled in #{course.title}."
   end
@@ -23,7 +29,7 @@ class Student
       "#{course_instance.title} with instructor #{course_instance.instructor} at #{course_instance.time}."
     }
   end
-  
+
   def available_courses
     courses = Course.all
     self.courses_helper(courses)
@@ -31,7 +37,7 @@ class Student
   end
 
   def course_list
-    StudentCourse.all.collect{
+    StudentCourse.all.collect {
       |student_course_instance|
       # puts "self: #{self}"
       # puts "StudentCourse.student: #{student_course_instance.student}"
@@ -42,7 +48,7 @@ class Student
   end
 
   def print_my_courses
-    #puts self.courses_helper(self.courses) 
+    #puts self.courses_helper(self.courses)
     # instead of creating a @courses variable where all the courses taken by this student is stored, we can save a linked copy of that data in a StudentCourse instance.
     if course_list.length == 0
       puts "You are not yet registered for any courses, #{self.name}"
@@ -50,7 +56,9 @@ class Student
       puts "#{self.name}, you are registered for:"
       puts self.courses_helper(self.course_list)
     end
-   end
+  end
 
-
+  def self.all
+    @@all
+  end
 end
