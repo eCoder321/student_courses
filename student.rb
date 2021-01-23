@@ -58,6 +58,18 @@ class Student
     end
   end
 
+  def find_in_roster(course)
+    StudentCourse.all.find{
+      |student_course_instance|
+      student_course_instance.course == course
+    }
+  end
+
+  def drop_course(course)
+    course = StudentCourse.all.delete(find_in_roster(course))
+    "You've successfully unenrolled in #{course.course.title}, #{self.name}."
+  end
+
   def self.all
     @@all
   end

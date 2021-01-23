@@ -2,7 +2,7 @@ require './student.rb'
 require './student_course.rb'
 require './course.rb'
 
-math = Course.new("Mathematics", "12pm", 
+math = Course.new("Mathematics", "12pm", "Furlong")
 engineering = Course.new("Engineering", "1pm", "Henry")
 data_science = Course.new("Data Science", "10am", "Sandy")
 astronomy = Course.new("Astronomy", "7:30am", "Myers")
@@ -15,9 +15,15 @@ olu =  Student.new("Olu Adeboye", 14, 12)
 # p StudentCourse.all
 
 # puts olu.available_courses
-#   puts olu.enroll(math)
-#    puts olu.enroll(data_science)
-#    puts shola.enroll(math)
+#    puts olu.enroll(math)
+#     puts olu.enroll(data_science)
+#     puts shola.enroll(math)
+#     p olu.find_in_roster(math)
+#     puts "\n"
+#     p StudentCourse.all
+# p olu.drop_course(data_science)
+# puts "\n"
+# p StudentCourse.all
 # #    p olu.courses
 # # p Course.all
 # # puts "\n"
